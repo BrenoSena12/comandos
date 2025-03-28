@@ -24,5 +24,4 @@ public class Main {
 		String trocar = original.replace('a','X');
 		String trocar2 = original.replace("ABC","123");
 			
-
 	}
