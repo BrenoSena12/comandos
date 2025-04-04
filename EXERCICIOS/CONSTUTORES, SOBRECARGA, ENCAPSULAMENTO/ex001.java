@@ -16,13 +16,10 @@ public class Banco {
 	private double saldo;
 	
 	//CONTRUTORES
-	public Banco() {
-	}
-	
-	public Banco(int numeroConta, String nome, double saldo) {
+	public Banco(int numeroConta, String nome, double depositoInicial) {
 		this.numeroConta = numeroConta;
 		this.nome = nome;
-		this.saldo = saldo;
+		addSaldo(depositoInicial);//metodo 
 	}
 	
 	public Banco(int numeroConta, String nome) {
@@ -47,11 +44,15 @@ public class Banco {
 		return saldo;
 	}
 	
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+	//METODOS
+	public void addSaldo(double saldo) {
+		this.saldo += saldo;
 	}
 	
-	//METODOS
+	public void saqueSaldo(double saque) {
+		this.saldo = this.saldo - saque - TAXA;
+		
+	}
 	
 	public String toString() {
 		return 
@@ -65,16 +66,10 @@ public class Banco {
 		+ "\n---------------------------";
 	}
 	
-	public void addSaldo(double saldo) {
-		this.saldo += saldo;
-	}
 	
-	public void saqueSaldo(double saque) {
-		this.saldo = this.saldo - saque - TAXA;
-		
-	}
 	
 }
+
 //--------------------------------------------------------------------------------------------------
 package application;
 
@@ -90,14 +85,13 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		Banco banco = new Banco();
+		Banco banco;//DECLAREI A VARIAVEL BANCO
 		
 		System.out.print("Numero conta: ");
 		int numeroConta = sc.nextInt();
 		sc.nextLine();
 		System.out.print("Nome do titular: ");
 		String nome = sc.nextLine();
-		
 		
 		System.out.print("Deseja adicionar um deposito inicial? (1) para sim e (2) para não.");
 		int opcao = sc.nextInt();
