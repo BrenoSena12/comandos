@@ -81,6 +81,8 @@ public class Program {
 				System.out.println("Nome: " + vetor_aluno[i].getNome_aluno());
 			}
 		}
+
+		System.out.print("FINALIZADO!")
 		sc.close();
 	}
 }
