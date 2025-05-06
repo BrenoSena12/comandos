@@ -16,6 +16,9 @@
 //INSERIR ELEMENTO EM POSIÇÃO ESPECIFICA
     lista_nomes.add(2,"Marco");
 
+// RETORNAR ELEMENTO DA POSIÇÃO
+System.out.println(carros.get(0)); 
+
 //VER TAMANHO DA LISTA
 	System.out.println(lista_nomes.size());
 
