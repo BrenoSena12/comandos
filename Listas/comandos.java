@@ -17,10 +17,16 @@
     lista_nomes.add(2,"Marco");
 
 // RETORNAR ELEMENTO DA POSIÇÃO
-System.out.println(carros.get(0)); 
+    System.out.println(lista_nomes.get(0)); 
 
+// ENCONTRAR POSIÇÃO DO ELEMENTO
+	System.out.println(lista_nomes.indexOf("Bob"));
+    
 //VER TAMANHO DA LISTA
 	System.out.println(lista_nomes.size());
+
+// LIMPAR LISTA 
+    Linsta_nomes.clear();
 
 //REMOVER ELEMENTO DA LISTA 
 	lista_nomes.remove("Anna");
@@ -28,9 +34,6 @@ System.out.println(carros.get(0));
 
 //REMOVER ELEMENTOS QUE ATENDEM UM PREDICADO
 	lista_nomes.removeIf(y -> y.charAt(0) == 'M');
-
-// ENCONTRAR POSIÇÃO DO ELEMENTO
-	System.out.println(lista_nomes.indexOf("Bob"));
 
 //FILTRA LISTA SEM APAGAR A LISTA ANTERIOR
 	List<String> result = lista_nomes.stream().filter(x -> x.charAt(0) == 'A').collect(Collectors.toList());
