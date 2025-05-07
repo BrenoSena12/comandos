@@ -43,8 +43,12 @@ public class Funcionario {
 	
 	// METODOS
 	
+	public void aumentoSalarial(double porcentagem) {
+		salario = (salario * porcentagem / 100) + salario;
+	}
 	
 }
+
 /*********************************** */
 package application;
 
@@ -61,7 +65,7 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		Funcionario funcionario;
+		Funcionario funcionario = new Funcionario();
 		
 		List<Funcionario> listaFuncionario = new ArrayList<>();
 		
@@ -69,21 +73,44 @@ public class Program {
 		int n = sc.nextInt();
 		
 		for(int indice = 0; indice < n; indice++) {
-			System.out.println("FUNCIONARIO #" + (indice + 1));
-			System.out.print("Id :");
-			int id = sc.nextInt();
-			System.out.print("Nome :");
-			String nome = sc.nextLine();
-			sc.nextLine();
-			System.out.print("Salario :");
-			double salario = sc.nextDouble();
 			System.out.println();
-			
-			funcionario = new Funcionario(id, nome, salario);
-			listaFuncionario.add(funcionario);
+			System.out.println("FUNCIONARIO #" + (indice + 1));
+			System.out.print("Id : ");
+			Integer id = sc.nextInt();
+			sc.nextLine();
+			System.out.print("Nome : ");
+			String nome = sc.nextLine();
+			System.out.print("Salario : ");
+			Double salario = sc.nextDouble();
+
+			listaFuncionario.add(funcionario = new Funcionario(id, nome, salario));
 		}
 		
-		System.out.println(listaFuncionario.get(funcionario.getNome("Breno")));
+		System.out.println();
+		
+		// TRÁS O DADO DA LISTA
+		// System.out.println(listaFuncionario.get(0).getNome());  
+		
+		System.out.print("DIGITE O ID PARA O AUMENTO SALARIAL: ");
+		double aumento = sc.nextDouble();
+		
+		System.out.print("PORCENTAGEM DE AUMENTO: ");
+		double porcentagem = sc.nextDouble();
+		
+		listaFuncionario.indexOf(aumento).funcionario.aumentoSalarial(porcentagem);
+		
+		//funcionario.aumentoSalarial(porcentagem);
+		
+		System.out.println();
+		
+		System.out.println("LISTA DE FUNCIONARIOS: ");
+		
+		for(Funcionario f : listaFuncionario) {
+			System.out.print(f.getId() + ", ");
+			System.out.print(f.getNome() + ", ");
+			System.out.printf("%.2f", f.getSalario() );
+			System.out.println();
+		}
 		
 		sc.close();
 	}
