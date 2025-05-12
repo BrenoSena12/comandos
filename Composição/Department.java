@@ -1,13 +1,13 @@
 package entities;
 
-public class Departamento {
-
+public class Department {
+	
 	private String name;
 	
-	public Departamento() {
+	public Department() {
 	}
 	
-	public Departamento(String name) {
+	public Department(String name) {
 		this.name = name;
 	}
 	
@@ -15,7 +15,7 @@ public class Departamento {
 		return name;
 	}
 	
-	public void setName(String name) {
+	public void setNome(String name) {
 		this.name = name;
 	}
 }
