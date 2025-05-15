@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import entities.enuns.WorkerLevel;
+import entities.enums.WorkerLevel;
 
 public class Worker {
-	
+
 	private String name;
 	private WorkerLevel level;
 	private Double baseSalary;
 	
-	// ASSOCIAÇÕES
 	private Department department;
-	private List<HourContract> contracts = new ArrayList<HourContract>();
+	private List<HourContract> contracts = new ArrayList<>();
 	
-	// CONSTRUTOR
 	public Worker() {
 	}
 
@@ -27,7 +25,6 @@ public class Worker {
 		this.department = department;
 	}
 
-	// ENCAPSULAMENTO
 	public String getName() {
 		return name;
 	}
@@ -64,15 +61,6 @@ public class Worker {
 		return contracts;
 	}
 
-	/*
-	 * Não pode deixar esse setContracts, pois em nenhum momento vamos trocar a lista
-	 * de contratos. 
-	 * 
-	 * public void setContracts(List<HourContract> contracts) {
-		this.contracts = contracts;
-	}*/
-	
-	// METODOS
 	public void addContract(HourContract contract) {
 		contracts.add(contract);
 	}
@@ -84,14 +72,14 @@ public class Worker {
 	public double income(int year, int month) {
 		double sum = baseSalary;
 		Calendar cal = Calendar.getInstance();
-		for(HourContract c : contracts) {
+		for (HourContract c : contracts) {
 			cal.setTime(c.getDate());
 			int c_year = cal.get(Calendar.YEAR);
-			int c_month = cal.get(Calendar.MONTH);
-			if(year == c_year && month == c_month) {
+			int c_month = 1 + cal.get(Calendar.MONTH);
+			if (year == c_year && month == c_month) {
 				sum += c.totalValue();
 			}
 		}
 		return sum;
-	} 
+	}
 }
