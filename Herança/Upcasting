@@ -1,0 +1,8 @@
+-> Quando convertemos de um objeto filho para um objeto pai.
+
+-> Sempre funciona, pois o objeto filho Sempre é compativel com o objeto pai
+
+-> Pode ser feito implicitamente
+
+-> Apenas os membros da classe pai podem ser acessados
+
