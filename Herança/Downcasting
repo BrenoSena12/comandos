@@ -1,0 +1,5 @@
+-> Quando convertemos de um objeto pai para um objeto filho
+
+-> Não pode ser implícito
+
+-> Pode lançar uma ClassCastException
