@@ -1,38 +1,47 @@
 package application;
 
-import entities.Account;
-import entities.BusinnesAccount;
-import entities.SavingsAccount;
+import entities.Conta;
+import entities.ContaEmpresarial;
+import entities.ContaPoupanca;
 
 public class Program {
 
 	public static void main(String[] args) {
+		
+		Conta conta = new Conta(1001, "Alex", 0.0);
+		ContaEmpresarial contaEmpresarial = new ContaEmpresarial(1002, "Maria", 0.0, 500.00); 
+		
+		/*
+		 UPCASTING: 
+		 -> pegar um objeto do tipo contEmpresarial e atribuir para uma variavel do tipo
+		 Conta.
+		 
+		 -> ContaEmpresarial é uma Conta.
+		 */
+		
+		Conta acc1 = contaEmpresarial;		
+		Conta acc2 = new ContaEmpresarial(1003, "Bob", 0.0, 200.0);
+		Conta acc3 = new ContaPoupanca(1004, "Anna", 0.0, 0.01);
 
-		Account acc = new Account(1001, "Alex", 0.0);
-		BusinnesAccount bacc = new BusinnesAccount(1002, "Maria", 0.0, 500.0);
+		/*
+		 DOWNCASTING: 
+		 -> Converter da super-classe para a sub-classe
+
+		 */
 		
-		// UPCASTING 
- 
-		// é pegar um objeto do tipo BusinnesAccount e atribuir a uma varivel do tipo Account
-		Account acc1 = bacc;
-		Account acc2 = new BusinnesAccount(1003, "Bob", 0.0, 200.0);
-		Account acc3 = new SavingsAccount(1004, "Anna", 0.0, 0.01);
+		ContaEmpresarial acc4 = (ContaEmpresarial)acc2;
+		// ERRO: ContaEmpresarial acc5 = (ContaEmpresarial)acc3;
 		
-		// DOWNCASTING = Converter um objeto da super-classe para uma sub-classe
-		BusinnesAccount acc4 = (BusinnesAccount)acc2;
-		acc4.loan(100.0);
-		
-		if(acc3 instanceof BusinnesAccount) {
-			BusinnesAccount acc5 = (BusinnesAccount)acc3;
-			acc5.loan(200.0);
-			System.out.println("Loan");
+		if(acc3 instanceof ContaEmpresarial) {
+			ContaEmpresarial acc5 = (ContaEmpresarial)acc3;
+			acc5.emprestimo(200.0);
+			System.out.println("Emprestimo!");
 		}
 		
-		if(acc3 instanceof SavingsAccount) {
-			SavingsAccount acc5 = (SavingsAccount)acc3;
-			acc5.updateBalance();;
-			System.out.println("Update!");
+		if(acc3 instanceof ContaPoupanca) {
+			ContaPoupanca acc5 = (ContaPoupanca)acc3;
+			acc5.atualizarSaldo();
+			System.out.println("Atualizado");
 		}
-		
 	}
 }
