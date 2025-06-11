@@ -1,0 +1,6 @@
+-> CLASSE
+    evita que a classe seja herdada
+
+-> Método
+    evita que o metodo seja sobreposto
+    
